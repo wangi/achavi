@@ -21,9 +21,10 @@
         var serverResolutions = resolutions.slice(0, 19);
 
         var url = [
-            'https://a.tile.openstreetmap.org/${z}/${x}/${y}.png',
-            'https://b.tile.openstreetmap.org/${z}/${x}/${y}.png',
-            'https://c.tile.openstreetmap.org/${z}/${x}/${y}.png'
+			'http://tile.opengeofiction.net/osmcarto/${z}/${x}/${y}.png'
+            //'https://a.tile.openstreetmap.org/${z}/${x}/${y}.png',
+            //'https://b.tile.openstreetmap.org/${z}/${x}/${y}.png',
+            //'https://c.tile.openstreetmap.org/${z}/${x}/${y}.png'
         ];
         var osm = new OpenLayers.Layer.OSM(null, url, {
             wrapDateLine: false,
@@ -262,7 +263,8 @@
         }
 
         loader.GET({
-            url: 'https://www.openstreetmap.org/api/0.6/changeset/' + id, 
+            url: 'http://opengeofiction.net/api/0.6/changeset/' + id, 
+            //url: 'https://www.openstreetmap.org/api/0.6/changeset/' + id, 
             zoomToExtent: true,
             postLoadCallback: handleChangeset
         });

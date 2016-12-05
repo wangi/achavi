@@ -8,7 +8,9 @@ function OverpassAPI(loader, bboxControl) {
     
     // http://www.overpass-api.de/augmented_diffs/000/008/066.osc.gz
     // http://www.overpass-api.de/augmented_diffs/id_sorted/000/028/706.osc.gz
-    this.sequenceUrlRegex = /.*overpass-api\.de\/augmented_diffs(?:\/id_sorted|)\/([0-9]{3})\/([0-9]{3})\/([0-9]{3}).osc.gz/;
+    //this.sequenceUrlRegex = /.*overpass-api\.de\/augmented_diffs(?:\/id_sorted|)\/([0-9]{3})\/([0-9]{3})\/([0-9]{3}).osc.gz/;
+    this.sequenceUrlRegex = /.*osm3s\.opengeofiction\.net\/api\/augmented_diffs(?:\/id_sorted|)\/([0-9]{3})\/([0-9]{3})\/([0-9]{3}).osc.gz/;
+    
 }
 
 OverpassAPI.prototype.getSequenceUrl = function(sequence) {
@@ -20,7 +22,8 @@ OverpassAPI.prototype.getSequenceUrl = function(sequence) {
         c : s.substring(6, 9)
     };
     //var urlFormat = 'http://overpass-api.de/augmented_diffs/${a}/${b}/${c}.osc.gz';
-    var urlFormat = 'https://overpass-api.de/augmented_diffs/id_sorted/${a}/${b}/${c}.osc.gz';
+    //var urlFormat = 'https://overpass-api.de/augmented_diffs/id_sorted/${a}/${b}/${c}.osc.gz';
+    var urlFormat = 'http://osm3s.opengeofiction.net/api/augmented_diffs/id_sorted/${a}/${b}/${c}.osc.gz';
    
     var url = OpenLayers.String.format(urlFormat, path);
     return url;
@@ -40,7 +43,7 @@ OverpassAPI.prototype.parseSequence = function (request, url) {
 
 OverpassAPI.prototype.getCurrentSequence = function () {
     var sequence = -1;
-    var url = "https://overpass-api.de/augmented_diffs/state.txt";
+    var url = "http://osm3s.opengeofiction.net/api/augmented_diffs/state.txt";
 
     OpenLayers.Request.GET({
         url: url,
@@ -57,7 +60,7 @@ OverpassAPI.prototype.getCurrentSequence = function () {
 OverpassAPI.prototype.getSequenceByTime = function (timestamp, callback) {
     var osmBase = moment.utc(timestamp).format('YYYY-MM-DDTHH[\\]:mm[\\]:ss\\Z');
     console.log('load time: ' + osmBase);
-    var url = 'https://overpass-api.de/api/augmented_state_by_date?osm_base=' + osmBase;
+    var url = 'http://osm3s.opengeofiction.net/api/augmented_state_by_date?osm_base=' + osmBase;
     console.log('requesting state ' + url);
     OpenLayers.Request.GET({
         url: url,
@@ -82,7 +85,7 @@ OverpassAPI.prototype.loadByUrl = function(url) {
 OverpassAPI.prototype.load = function(sequence, postLoadCallback) {
     var bboxParam;
     if (sequence && sequence >= 0) {
-        var url = "https://overpass-api.de/api/augmented_diff?id=" + sequence + "&info=no";
+        var url = "http://osm3s.opengeofiction.net/api/augmented_diff?id=" + sequence + "&info=no";
         //var url = getSequenceUrl(sequence);
         if (!this.bbox) {
             this.bbox = this.bboxControl.addBBoxFromViewPort();
@@ -117,7 +120,7 @@ OverpassAPI.prototype.loadDiff = function(from, to, relations, postLoadCallback,
     }
     dateRange = '"' + mindate + '"' + maxdate;
 
-    var data_url = 'https://overpass-api.de/api/interpreter';
+    var data_url = 'http://osm3s.opengeofiction.net/api/interpreter';
     url = data_url + '?data=[adiff:' + dateRange
         + '];(node(bbox)(changed);way(bbox)(changed);' + (relations ? 'relation(bbox)(changed);' : '') + ');out meta geom(bbox);';
 
