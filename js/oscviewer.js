@@ -262,7 +262,7 @@ var oscviewer = (function() {
     }
 
     function formatOsmLink(val, type) {
-        return '<a href="https://www.openstreetmap.org/' + type + '/' + xssFilters.uriPathInDoubleQuotedAttr(val) 
+        return '<a href="http://opengeofiction.net/' + type + '/' + xssFilters.uriPathInDoubleQuotedAttr(val) 
                 + '" target="_blank">' + xssFilters.inHTMLData(val) + '</a>';
     }
 

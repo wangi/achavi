@@ -22,16 +22,13 @@
 
         var url = [
 			'http://tile.opengeofiction.net/osmcarto/${z}/${x}/${y}.png'
-            //'https://a.tile.openstreetmap.org/${z}/${x}/${y}.png',
-            //'https://b.tile.openstreetmap.org/${z}/${x}/${y}.png',
-            //'https://c.tile.openstreetmap.org/${z}/${x}/${y}.png'
         ];
         var osm = new OpenLayers.Layer.OSM(null, url, {
             wrapDateLine: false,
             opacity : 0.2,
             resolutions : resolutions,
             serverResolutions : serverResolutions,
-            attribution: "tiles &copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors"
+            attribution: "tiles &copy; <a href='http://opengeofiction.net/copyright'>OpenGeofiction</a> contributors"
         });
         map.addLayer(osm);
 
@@ -94,7 +91,7 @@
             styleMap : styleMaps.changes,
             renderers : renderers,
             rendererOptions: { zIndexing: true },
-            attribution: 'data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, '
+            attribution: 'data &copy; <a href="http://opengeofiction.net/copyright">OpenGeofiction</a> contributors, '
                 + 'licensed under <a href="http://opendatacommons.org/licenses/odbl/">ODbL</a>'
         });
 
@@ -264,7 +261,6 @@
 
         loader.GET({
             url: 'http://opengeofiction.net/api/0.6/changeset/' + id, 
-            //url: 'https://www.openstreetmap.org/api/0.6/changeset/' + id, 
             zoomToExtent: true,
             postLoadCallback: handleChangeset
         });

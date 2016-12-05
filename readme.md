@@ -1,5 +1,7 @@
 # achavi - Augmented OSM Change Viewer
 
+Updated to work against [OpenGeofiction](http://opengeofiction.net/).
+
 Displays [OpenStreetMap](openstreetmap.org) changes based on the [Overpass API](https://overpass-api.de/) [Augmented Delta (adiff)](https://wiki.openstreetmap.org/wiki/Overpass_API/Overpass_QL#Augmented_Delta_between_two_dates_.28.22adiff.22.29) query and the
 [Augmented Diff](https://wiki.openstreetmap.org/wiki/Overpass_API/Augmented_Diffs#Contained_data) format.
 
