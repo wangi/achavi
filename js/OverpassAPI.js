@@ -108,8 +108,8 @@ OverpassAPI.prototype.load = function(sequence, postLoadCallback) {
 };
 
 OverpassAPI.prototype.loadDiff = function(from, to, relations, postLoadCallback, changeset) {
-    var mindate = moment.utc(from).subtract('hours', 1).format('YYYY-MM-DDTHH:mm:ss\\Z'),
-        maxdate = to ? moment.utc(to).subtract('hours', 1).format('YYYY-MM-DDTHH:mm:ss\\Z') : '',
+    var mindate = moment.utc(from).format('YYYY-MM-DDTHH:mm:ss\\Z'),
+        maxdate = to ? moment.utc(to).format('YYYY-MM-DDTHH:mm:ss\\Z') : '',
         bboxParam,
         url,
         xhr,
